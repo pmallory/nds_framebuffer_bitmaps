@@ -1,0 +1,30 @@
+#binaries and stuff
+*.elf
+*.nds
+*.out
+build/
+
+#OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must ends with two \r.
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+
+.Trashes
+
+#vim
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
