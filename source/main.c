@@ -5,13 +5,13 @@ typedef volatile unsigned char vu8;
 
 #define REG_DISPCNT_MAIN  (*(vu32*)0x04000000)
 #define REG_DISPCNT_SUB   (*(vu32*)0x04001000)
-#define MODE_FB0    (0x00020000)
-#define VRAM_A        ((u16*)0x6800000)
+#define MODE_FB0          (0x00020000)
+#define VRAM_A            ((u16*)0x6800000)
 #define VRAM_A_CR         (*(vu8*)0x04000240)
 #define VRAM_ENABLE       (1<<7)
-#define SCANLINECOUNTER *(vu16 *)0x4000006
+#define SCANLINECOUNTER   *(vu16 *)0x4000006
 
-#define COLOR(r,g,b) ((r) | (g)<<5 | (b)<<10)
+#define COLOR(r,g,b)  ((r) | (g)<<5 | (b)<<10)
 #define OFFSET(r,c,w) ((r)*(w)+(c))
 
 #define SCREENWIDTH  (256)
@@ -38,12 +38,16 @@ BALL old_ball;
 
 int main(void) {
 
+    // Set the main diplay to frame buffer mode 0 (FB0).
+    // In FB0 VRAM A is drawn to the screen.
     REG_DISPCNT_MAIN = MODE_FB0;
 
+    // Enable VRAM A
     VRAM_A_CR = VRAM_ENABLE;
 
     initialize_ball();
 
+    // main loop
     while(1) {
         update();
         waitForVblank();
